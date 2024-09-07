@@ -1,0 +1,80 @@
+.login {
+    height: 100vh;
+    background-color: #131415;
+}
+
+.login__container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 100%;
+}
+
+.login__container > .left {
+    padding: 50px;
+}
+
+
+.login__container > .left .left__container {
+    padding: 50px;
+    height: 100%;
+    background-color: #1b1b21;
+    border-radius: 10px;
+}
+
+.login__container > .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.form__login {
+    width: 350px;
+}
+
+.form__login > div > div {
+    margin: 25px 0;
+}
+
+.btn__login {
+    display: flex;
+    justify-content: center;
+}
+
+.session__credentials {
+    color: #f5f6f7;
+}
+
+.session__credentials > div {
+    color: #f5f6f7;
+}
+
+
+.session__credentials > div > .user {
+    color: #586ae9;
+    background-color: #5869e931;
+    padding: 10px;
+    border-radius: 5px;
+    width: min-content;
+}
+
+.session__credentials > div > .password {
+    color: #586ae9;
+    background-color: #5869e931;
+    padding: 10px;
+    border-radius: 5px;
+    width: min-content;
+}
+
+@media screen and (max-width:768px) {
+    .login__container {
+        display: grid;
+        grid-template-columns: 100%;
+        height: 100%;
+    }
+
+    .login__container > .left {
+        display: none;
+    }
+    
+}

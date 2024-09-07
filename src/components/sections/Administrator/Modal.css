@@ -1,0 +1,83 @@
+
+
+
+/*=================================================
+ 
+  Modal de precios del modal del articulo 
+  
+=================================================*/
+
+
+.overlay__modal_administrator {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	visibility: hidden;
+	z-index: 1;
+}
+
+.overlay__modal_administrator.active {
+	visibility: visible;
+}
+
+.header__modal {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.popup__modal_administrator {
+	background-color: #17191b;  
+	border-radius: 5px;
+	width: 70%;
+    height: 70%;
+	transition: .3s ease all;
+	transform: scale(0.7);
+	opacity: 0;
+    overflow: hidden;
+
+}
+
+.administrator-modal {
+    padding: 10px 20px 20px 20px;
+}
+
+
+.popup__modal_administrator .btn-cerrar-popup__modal_administrator {
+	font-size: 16px;
+	display: block;
+	transition: .3s ease all;
+	color: #BBBBBB;
+    position: absolute;
+    right: 15px;
+    top: 13px;
+}
+
+/* ------------------------- */
+/* ANIMACIONES */
+/* ------------------------- */
+.popup__modal_administrator.active {	transform: scale(1); opacity: 1; }
+
+.administrator-modal_container > .row__one {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+}
+
+
+.administrator-modal_container > .row__one .inputs__general.disabled {
+	background-color: #5869e925;
+	outline: none;
+}
