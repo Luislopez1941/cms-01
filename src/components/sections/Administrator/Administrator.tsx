@@ -79,7 +79,7 @@ const Administrator: React.FC = () => {
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f5f6f7"><path d="M380-320q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
             </div>
           </div>
-          <div>
+          <div className='btn__create-user__container'>
             <button className='btn__general-purple' onClick={() => handleModalChange('administrator-modal')}>
               Crear usuarios
             </button>
@@ -90,7 +90,7 @@ const Administrator: React.FC = () => {
           <div>
             {user ? (
               <div className='table__numbers'>
-                  <p className='text'>Total de Ordenes</p>
+                  <p className='text'>Total de administradores</p>
                   <div className='quantities_tables'>{user.length}</div>
               </div>
               ) : (
@@ -99,20 +99,17 @@ const Administrator: React.FC = () => {
           </div>
           <div className='table__head'>
             <div className='thead'>
-              <div className='th'>
+              <div className='th '>
                   <p className=''>Nombres</p>
               </div>
-              <div className='th'>
+              <div className='th movil'>
                   <p className=''>Apellidos</p>
               </div>
-              <div className='th'>
+              <div className='th movil'>
                   <p className=''>Email</p>
               </div>
-              <div className='th'>
+              <div className='th movil'>
                   <p className=''>Estado</p>
-              </div>
-              <div className='th'>
-                  
               </div>
               <div className='th'>
                   
@@ -127,13 +124,13 @@ const Administrator: React.FC = () => {
                             <div className='td'>
                                 {item.name}
                             </div>
-                            <div className='td'>
+                            <div className='td movil'>
                               {item.surnames}
                             </div>
-                            <div className='td'>
+                            <div className='td movil'>
                                 {item.email}
                             </div>
-                            <div className='td'>
+                            <div className='td movil'>
                               {item.state == true ? 
                               <div className='activated-status' onClick={() => updateStatus(item)}>
                                 <p>Activo</p>
@@ -144,11 +141,8 @@ const Administrator: React.FC = () => {
                               </div>
                               }
                             </div>
-                            <div className='td'>
+                            <div className='td update'>
                                 <button className='btn__general-purple' type='button' onClick={() => modalUpdate(item)}>Editar</button>
-                            </div>
-                            <div className='td'>
-                                <button className='btn__general-danger' type='button'>Eliminar</button>
                             </div>
                         </div>
                     </div>

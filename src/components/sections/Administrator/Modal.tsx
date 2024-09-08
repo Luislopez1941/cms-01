@@ -174,7 +174,7 @@ const Modal = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className='btn__create-administrator_container'>
             <button type="submit" className="btn__general-purple" disabled={creating}>
               {creating ? (
                 <>

@@ -46,7 +46,6 @@
 	transform: scale(0.7);
 	opacity: 0;
     overflow: hidden;
-
 }
 
 .administrator-modal {
@@ -80,4 +79,32 @@
 .administrator-modal_container > .row__one .inputs__general.disabled {
 	background-color: #5869e925;
 	outline: none;
+}
+
+.administrator-modal > .btn__create-administrator_container {
+	display: flex;
+	justify-content: center;
+	margin: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+	
+}
+
+@media screen and (max-width: 500px) {
+	.popup__modal_administrator {
+		background-color: #17191b;  
+		border-radius: 5px;
+		width: 90%;
+		height: 80%;
+		transition: .3s ease all;
+		transform: scale(0.7);
+		opacity: 0;
+		overflow: hidden;
+	}
+
+	.administrator-modal_container > .row__one {
+		grid-template-columns: 1fr;
+	}
 }

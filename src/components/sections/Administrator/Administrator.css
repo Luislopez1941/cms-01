@@ -75,7 +75,6 @@
     display: grid;
 	width: 100%;
     grid-template-columns: repeat(4, 1fr) 100px 100px;
-	
     padding: 10px;
     font-weight: 600;
 }
@@ -144,4 +143,43 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+
+
+
+
+  @media screen and (max-width: 768px) {
+    .administrator__container > .row__one {
+        display: block;
+    }
+
+    .btn__create-user__container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .table__administrators .table__head .thead {
+        grid-template-columns: 1fr;
+    }
+
+    .table__administrators .table__head .thead .th.movil {
+        display: none;
+    }
+
+    .table__administrators .table__body .tbody .td.movil {
+        display: none;
+    }
+
+    .table__administrators .table__body .tbody {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .table__administrators .table__body .tbody .td.update {
+        display: flex;
+        justify-content: end;
+    }
+
+    
+    
   }
