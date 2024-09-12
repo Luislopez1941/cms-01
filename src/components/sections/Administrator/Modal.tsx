@@ -14,18 +14,31 @@ const Modal = () => {
   const modalState = useSelector((state: any) => state.modals);
 
   const administratorUpdate = useSelector((state: any) => state.administrator);
+  
+  const token: any = localStorage.getItem('token-eco');
 
   const handleModalChange = (value: any) => {
     dispatch(modal(value));
+    dispatch(updateAdministrator('reset'));
+    setData({
+      name: '',
+      surnames: '',
+      email: '',
+      password: '',
+      rol: '',
+      token: token
+    });
+
   };
 
+  console.log(administratorUpdate)
+  
   useEffect(() => {
     if(administratorUpdate) {
       setData({
         name: administratorUpdate.name,
         surnames: administratorUpdate.surnames,
         email: administratorUpdate.email,
-        password: administratorUpdate.password,
         rol: administratorUpdate.rol,
         token: token
       });
@@ -43,7 +56,7 @@ const Modal = () => {
     }
   ]);
 
-  const token: any = localStorage.getItem('token-eco');
+
 
 
   // Estado inicial para los campos del formulario
@@ -138,11 +151,11 @@ const Modal = () => {
             <div className='row__one'>
               <div>
                 <label className='label__general'>Nombre</label>
-                <input name="name" className={`inputs__general ${updateAdministrator == undefined ? '' : 'disabled'}`}  type="text" value={data.name} onChange={handleChange} placeholder='Ingresa el nombre' />
+                <input name="name" className={`inputs__general ${administratorUpdate == null ? '' : 'disabled'}`} disabled={administratorUpdate !== null} type="text" value={data.name} onChange={handleChange} placeholder='Ingresa el nombre' />
               </div>
               <div>
                 <label className='label__general'>Apellidos</label>
-                <input name="surnames" className={`inputs__general ${updateAdministrator == undefined ? '' : 'disabled'}`}  type="text" value={data.surnames} onChange={handleChange} placeholder='Ingresa los apellidos' />
+                <input name="surnames" className={`inputs__general ${administratorUpdate == null ? '' : 'disabled'}`} disabled={administratorUpdate !== null}  type="text" value={data.surnames} onChange={handleChange} placeholder='Ingresa los apellidos' />
               </div>
               <div>
                 <label className='label__general'>Email</label>

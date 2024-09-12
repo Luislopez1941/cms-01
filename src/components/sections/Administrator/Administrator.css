@@ -2,26 +2,32 @@
     width: 100%;
     padding: 20px;
     height: 90vh;
+
 }
 
 .administrator__container {
     width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+   
 }
 
-.administrator__container > .row__one {
+.administrator__container>.row__one {
     display: flex;
     justify-content: space-between;
     align-items: end;
 }
 
-.administrator__container > .row__one > .input__search .inputs__general {
+.administrator__container>.row__one>.input__search .inputs__general {
     margin-top: 0;
 }
+
 
 .input__search {
     display: flex;
     align-items: center;
-   
+
 }
 
 .icon__search {
@@ -32,18 +38,18 @@
     margin-left: 10px;
     padding: 7px;
     cursor: pointer;
- 
+
 }
 
 
 
-.administrator__container > .row__two {
+.administrator__container>.row__two {
     display: flex;
     justify-content: end;
     margin-top: 20px;
 }
 
-.administrator__container > .row__two > .pagination__container > .item{
+.administrator__container>.row__two>.pagination__container>.item {
     margin: 0 10px;
     color: #f5f6f7;
 }
@@ -58,8 +64,10 @@
 .table__administrators {
     margin-top: 20px;
     border-radius: 10px;
-	text-align: justify;
+    text-align: justify;
+    overflow: hidden;
     width: 100%;
+    
 }
 
 
@@ -73,15 +81,14 @@
 
 .table__administrators .table__head .thead {
     display: grid;
-	width: 100%;
+    width: 100%;
     grid-template-columns: repeat(4, 1fr) 100px 100px;
     padding: 10px;
     font-weight: 600;
 }
 
 .table__administrators .table__body {
-	height: 500px;
-    overflow: hidden;
+    height: 100%;
     overflow: auto;
     transition-delay: 0.0s;
     &::-webkit-scrollbar {
@@ -89,13 +96,13 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #1F319D; 
+        background-color: #1F319D;
         border-radius: 5px;
         height: 100px;
     }
 
     &::-webkit-scrollbar-track {
-    /* Para modificar el background */
+        /* Para modificar el background */
     }
 }
 
@@ -103,17 +110,17 @@
 .table__administrators .tbody__container:nth-child(even) {
     background-color: #13171f;
     color: #f5f6f7;
-  }
-  
-  .table__administrators .tbody__container:nth-child(odd) {
+}
+
+.table__administrators .tbody__container:nth-child(odd) {
     background-color: var(--two-table-color);
     color: #f5f6f7;
-   
-  }
 
-  .table__administrators .table__body .tbody {
+}
+
+.table__administrators .table__body .tbody {
     display: flex;
-} 
+}
 
 .table__administrators .table__body .tbody {
     display: grid;
@@ -130,11 +137,11 @@
 
 
 
-  .pagination__container {
+.pagination__container {
     display: flex;
-  }
+}
 
-  .pagination__container > .item {
+.pagination__container>.item {
     background-color: #586ae9;
     border-radius: 5px;
     display: flex;
@@ -143,15 +150,20 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-  }
+}
 
 
 
 
-  @media screen and (max-width: 768px) {
-    .administrator__container > .row__one {
+@media screen and (max-width: 768px) {
+    .administrator__container>.row__one {
         display: block;
     }
+
+    .administrator__container>.row__one>.input__search>div:nth-child(odd) {
+        width: 100%;
+    }
+
 
     .btn__create-user__container {
         margin-top: 20px;
@@ -180,6 +192,6 @@
         justify-content: end;
     }
 
-    
-    
-  }
+
+
+}

@@ -61,6 +61,20 @@ const APIs = {
   
     return ConfigurationAPIs.put(path, data, config);
   },
+
+  // Administradores
+  searchUser: async (data: any, customPath?: string) => {
+    const path = customPath || `user/searchUser/${data.email}`;
+    const config = {
+      headers: {
+        Authorization: data.token,
+      },
+      params: { ...data }, 
+    };
+  
+    return ConfigurationAPIs.get(path, config);
+  },
+  
   
 
 
