@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 class ApiService {
   private axiosInstance: AxiosInstance;
   
- constructor(baseURL: string = 'http://localhost:4000/') {
+ constructor(baseURL: string = 'https://back-ecommerce-kyxa.onrender.com/') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {

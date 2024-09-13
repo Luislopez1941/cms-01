@@ -26,7 +26,6 @@ const Modal = () => {
       email: '',
       password: '',
       rol: '',
-      token: token
     });
 
   };

@@ -13,9 +13,10 @@ const APIs = {
 
   // Administradores 
   createAdministrator: async (data: any, customPath?: string) => {
+    console.log(data)
     const path = customPath || 'user/create';
     const token = data.token;
-    delete data.token;
+    // delete data.token;
     const headers = {
       Authorization: token,
     };
