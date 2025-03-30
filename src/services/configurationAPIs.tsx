@@ -3,7 +3,16 @@ import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 class ApiService {
   private axiosInstance: AxiosInstance;
   
- constructor(baseURL: string = 'https://fabulous-nature-production.up.railway.app/') {
+//  constructor(baseURL: string = 'https://fabulous-nature-production.up.railway.app/') {
+//     this.axiosInstance = axios.create({
+//       baseURL,
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//   }
+
+  constructor(baseURL: string = 'https://jllc-back.com/cms-01') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {
@@ -12,7 +21,7 @@ class ApiService {
     });
   }
  
-
+  
   private async request<T>(
     method: string,
     url: string,

@@ -5,14 +5,16 @@ import './Modal.css'
 import { useDispatch } from 'react-redux'
 import { modal } from '../../../redux/state/modals';
 import APIs from '../../../services/APIs'
+import { updateCategories } from '../../../redux/state/Categories'
+
 
 const Categories: React.FC = () => {
 
   const dispatch = useDispatch()
 
   
-  const handleModalChange = (value: any) => {
-    dispatch(modal(value)); // Despacha la acción para cambiar el estado del modal
+  const setModal = (value: any) => {
+    dispatch(modal(value));
   };
 
   let token = localStorage.getItem('token-eco')
@@ -22,7 +24,7 @@ const Categories: React.FC = () => {
 
   const fetch = async () => {
 
-    let classification = 'Masculino'
+    let classification = 1
     try {
       let result: any = await APIs.getCategories(classification, token)
       setCategories(result.data)
@@ -49,6 +51,11 @@ const Categories: React.FC = () => {
       fetch()
     }
 
+    const updateModalCategories = (category: any) => {
+      setModal('categories-modal-update')
+      dispatch(updateCategories(category));
+    }
+
   return (
     <div className='categories'>
       <div className='categories__container'>
@@ -68,7 +75,7 @@ const Categories: React.FC = () => {
               </div>
             </div>
             <div>
-              <button className='btn__general-purple' onClick={() => handleModalChange('categories-modal')}>Crear subcategoría</button>
+              <button className='btn__general-purple' onClick={() => setModal('categories-modal')}>Crear subcategoría</button>
             </div>
           </div>
           <div>
@@ -125,7 +132,7 @@ const Categories: React.FC = () => {
                                 <p>{item.createdAt}</p>
                             </div>
                             <div className='td'>
-                              {item.gender}
+                              {item.gender.name}
                             </div>
                             <div className='td'>
                                 {item.email}
@@ -142,11 +149,11 @@ const Categories: React.FC = () => {
                               }
                             </div>
                             <div className='td'>
-                                <button className='btn__general-purple' type='button'>Editar</button>
+                                <button className='btn__general-purple' type='button' onClick={() => updateModalCategories(item)}>Editar</button>
                             </div>
-                            <div className='td'>
+                            {/* <div className='td'>
                                 <button className='btn__general-danger' type='button'>Eliminar</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ))}
