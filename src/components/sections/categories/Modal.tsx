@@ -5,7 +5,7 @@ import genres from './genres.json'
 import { useDispatch, useSelector } from "react-redux";
 import { modal } from '../../../redux/state/modals';
 import './Modal.css'
-import { updateCategories } from '../../../redux/state/Categories';
+
 
 const Modal = () => {
 

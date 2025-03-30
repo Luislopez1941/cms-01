@@ -10,9 +10,7 @@ const Variations: React.FC = () => {
 
   const [color, setColor] = useState('#e8eaed');
 
-  const handleColorChange = (event: any) => {
-    setColor(event.target.value);
-  };
+
 
   const [selectColors, setSelectColors] = useState<boolean>(false);
   const [selectedColors, setSelectedColors] = useState<any>(null);
