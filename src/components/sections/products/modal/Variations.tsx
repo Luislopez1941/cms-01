@@ -4,7 +4,7 @@ import baseColors from './json/baseColors.json';
 import sizes from './json/sizes.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { addVariation, removeVariation } from '../../../../redux/state/Product';
-import { Variation } from '../../../../redux/state/Product';
+
 
 const Variations: React.FC = () => {
   const dispatch = useDispatch();
@@ -185,7 +185,7 @@ const Variations: React.FC = () => {
                 <div className="container_color">
                   <div
                     className="color__box"
-                    style={{ backgroundColor: baseColors.find((c: any) => c.name === v.color)?.hex || '#ccc' }}
+                    // style={{ backgroundColor: baseColors.find((c: any) => c.name === v.color)?.hex || '#ccc' }}
                   ></div>
                   <div>
                     <p>{v.color}</p>
