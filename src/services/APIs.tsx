@@ -1,41 +1,39 @@
 import ConfigurationAPIs from './configurationAPIs';
 
 const APIs = {
-    login: async ( data: any, customPath?: string) => {
-      const path = customPath || 'login';
-      return ConfigurationAPIs.post(path, data);
-    },
+  login: async (data: any, customPath?: string) => {
+    const path = customPath || 'auth/login';
+    return ConfigurationAPIs.post(path, data);
+  },
 
-    getUsersGeneral: async ( data: any, customPath?: string) => {
-      const path = customPath || 'usuario_get';
-      return ConfigurationAPIs.post(path, data);
-    },
+  getUsersGeneral: async (data: any, customPath?: string) => {
+    const path = customPath || 'usuario_get';
+    return ConfigurationAPIs.post(path, data);
+  },
 
-  // Administradores 
-  createAdministrator: async (data: any, customPath?: string) => {
+
+
+
+
+
+
+
+  createStore: async (data: any, customPath?: string) => {
     console.log(data)
-    const path = customPath || 'user/create';
-    const token = data.token;
+    const path = customPath || 'store/create';
+    // const token = data.token;
     // delete data.token;
-    const headers = {
-      Authorization: token,
-    };
-    return ConfigurationAPIs.post(path, data, { headers });
+    // const headers = {
+    //   Authorization: token,
+    // };
+    return ConfigurationAPIs.post(path, data);
   },
 
-  
-  // Administradores
-  getUsers: async (data: any, customPath?: string) => {
-    const path = customPath || `user/${data.filtro}`;
-    const config = {
-      headers: {
-        Authorization: data.token,
-      },
-      params: { ...data }, 
-    };
-  
-    return ConfigurationAPIs.get(path, config);
+  getStore: async (userId: number, customPath?: string) => {
+    const path = customPath || `store/get?userId=${userId}`;
+    return ConfigurationAPIs.get(path);
   },
+
 
   // Administradores
   updateStatus: async (id: any, data: any, token: any, customPath?: string) => {
@@ -44,9 +42,9 @@ const APIs = {
       headers: {
         Authorization: token,
       },
-      params: { ...data }, 
+      params: { ...data },
     };
-  
+
     return ConfigurationAPIs.put(path, data, config);
   },
 
@@ -57,9 +55,9 @@ const APIs = {
       headers: {
         Authorization: token,
       },
-      params: { ...data }, 
+      params: { ...data },
     };
-  
+
     return ConfigurationAPIs.put(path, data, config);
   },
 
@@ -70,54 +68,44 @@ const APIs = {
       headers: {
         Authorization: data.token,
       },
-      params: { ...data }, 
+      params: { ...data },
     };
-  
+
     return ConfigurationAPIs.get(path, config);
   },
-  
-  
+
+
 
 
   ///////////////////////////////////////////////////////// Sub categorias ////////////////////////////////////////////////////////
-  createSubCategories: async (data: any, token: string, customPath?: string) => {
-    const path = customPath || 'category/create';
-    const headers = {
-      Authorization: token,
-    };
-    return ConfigurationAPIs.post(path, data, { headers });
+  createCategories: async (data: any, customPath?: string) => {
+    const path = customPath || 'categories/create';
+    return ConfigurationAPIs.post(path, data);
   },
 
-    
+  getCategories: async (store_id: any) => {
+    const path = `categories/get?store_id=${store_id}`;
+    return ConfigurationAPIs.get(path);
+  },
+
   // Administradores
-  getCategories: async (classification: any, token: any, customPath?: string) => {
-    const path = customPath || `category/get/${classification}`;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-      params: { ...classification }, 
-    };
-  
-    return ConfigurationAPIs.get(path, config);
+  updateStatusCategory: async (id: any, data: any, customPath?: string) => {
+    const path = customPath || `category/state/${id}`;
+    return ConfigurationAPIs.put(path, data);
   },
 
-    // Administradores
-    updateStatusCategory: async (id: any, data: any, token: any, customPath?: string) => {
-      const path = customPath || `category/state/${id}`;
-      const config = {
-        headers: {
-          Authorization: token,
-        },
-        params: { ...data }, 
-      };
-    
-      return ConfigurationAPIs.put(path, data, config);
-    },
-  
+   ///////////////////////////////////////////////////////// Producto ////////////////////////////////////////////////////////
+  createProduct: async (data: any, customPath?: string) => {
+    const path = customPath || 'products/create';
+    return ConfigurationAPIs.post(path, data);
+  },
 
 
- 
+
+
+
+
+
 }
 
 

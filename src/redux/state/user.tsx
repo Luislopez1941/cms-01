@@ -8,11 +8,11 @@ export const EmptyUserState: UserInfo = {
   email: ''
 };
 
-export const UserKey = 'user';
+export const UserKey = 'userEleganza';
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : EmptyUserState,
+  initialState: localStorage.getItem('userEleganza') ? JSON.parse(localStorage.getItem('userEleganza') as string) : EmptyUserState,
   reducers: {
     createUser: (_, action) => {
       persistLocalStorage<UserInfo>(UserKey, action.payload);

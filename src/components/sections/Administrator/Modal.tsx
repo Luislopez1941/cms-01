@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { modal } from '../../../redux/state/modals';
 import Swal from 'sweetalert2';
 import './Modal.css';
-import { updateAdministrator } from '../../../redux/state/Administrator';
+
 
 const Modal = () => {
 
@@ -19,7 +19,7 @@ const Modal = () => {
 
   const handleModalChange = (value: any) => {
     dispatch(modal(value));
-    dispatch(updateAdministrator('reset'));
+   
     setData({
       name: '',
       surnames: '',
@@ -101,7 +101,7 @@ const Modal = () => {
     }
    } else {
     try {
-      const result: any = await APIs.createAdministrator(data);
+      const result: any = await APIs.createStore(data);
       Swal.fire({
         title: result.status === 'warning' ? 'Advertencia' : 'Éxito',
         text: result.message,

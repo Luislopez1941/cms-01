@@ -8,7 +8,7 @@ export const PublicRoutes = {
     WEBPAGE: 'webpage',
     HOME: 'Home/*',
 
-    ADMINISTRATOR: 'administrator',
+    STORE: 'store',
     CATEGORIES: 'categories',
     PRODUCTS: 'products'
   };

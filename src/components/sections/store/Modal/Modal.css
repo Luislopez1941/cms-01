@@ -1,4 +1,6 @@
 
+
+
 /*=================================================
  
   Modal de precios del modal del articulo 
@@ -6,7 +8,7 @@
 =================================================*/
 
 
-.overlay__categories__modal {
+.overlay__modal_administrator {
 	background: rgba(0,0,0,.3);
 	position: fixed;
 	top: 0;
@@ -20,7 +22,7 @@
 	z-index: 1;
 }
 
-.overlay__categories__modal.active {
+.overlay__modal_administrator.active {
 	visibility: visible;
 }
 
@@ -35,7 +37,7 @@
 }
 
 
-.popup__categories__modal {
+.popup__modal_administrator {
 	background-color: #17191b;  
 	border-radius: 5px;
 	width: 70%;
@@ -44,15 +46,14 @@
 	transform: scale(0.7);
 	opacity: 0;
     overflow: hidden;
-
 }
 
-.categories__modal {
+.administrator-modal {
     padding: 10px 20px 20px 20px;
 }
 
 
-.popup__categories__modal .btn-cerrar-popup__categories__modal {
+.popup__modal_administrator .btn-cerrar-popup__modal_administrator {
 	font-size: 16px;
 	display: block;
 	transition: .3s ease all;
@@ -65,66 +66,45 @@
 /* ------------------------- */
 /* ANIMACIONES */
 /* ------------------------- */
-.popup__categories__modal.active {	transform: scale(1); opacity: 1; }
+.popup__modal_administrator.active {	transform: scale(1); opacity: 1; }
 
-
-
-.categories__modal_container > div {
-    margin-bottom: 20px;
-}
-
-
-
-.categories__modal_container > .row__one {
+.administrator-modal_container > .row__one {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: repeat(3, 1fr);
     row-gap: 20px;
     column-gap: 10px;
 }
 
 
-
-
-.categories-modal_container > .row__one .inputs__general.disabled {
+.administrator-modal_container > .row__one .inputs__general.disabled {
 	background-color: #5869e925;
 	outline: none;
 }
 
-
-
-
-
-
-.categories__modal_container > .row__one {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
-    align-items: end;
-    column-gap: 20px;
-}
-
-.categories__modal_container > .row__two {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    column-gap: 20px;
-}
-
-.categories__modal_container > .row__three {
-    display: flex;
-    gap: 20px;
-
+.administrator-modal > .btn__create-administrator_container {
+	display: flex;
+	justify-content: center;
+	margin: 20px;
 }
 
 
-.categories__modal_container > .row__three .item {
-    display: flex;
-
+@media screen and (max-width: 768px) {
+	
 }
 
-.category__item {
-    background-color: #bf6903;
-    color: #f5f6f7;
-    padding: 10px;
-    border-radius: 5px;
-}
+@media screen and (max-width: 500px) {
+	.popup__modal_administrator {
+		background-color: #17191b;  
+		border-radius: 5px;
+		width: 90%;
+		height: 80%;
+		transition: .3s ease all;
+		transform: scale(0.7);
+		opacity: 0;
+		overflow: hidden;
+	}
 
+	.administrator-modal_container > .row__one {
+		grid-template-columns: 1fr;
+	}
+}

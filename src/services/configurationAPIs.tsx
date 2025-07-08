@@ -12,7 +12,7 @@ class ApiService {
 //     });
 //   }
 
-  constructor(baseURL: string = 'https://jllc-back.com/cms-01') {
+  constructor(baseURL: string = 'http://localhost:3000/') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {

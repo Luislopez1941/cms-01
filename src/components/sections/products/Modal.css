@@ -39,17 +39,14 @@
 	background-color: #17191b;  
 	border-radius: 5px;
 	width: 70%;
-    height: 70%;
+    height: 80vh;
 	transition: .3s ease all;
 	transform: scale(0.7);
 	opacity: 0;
-    overflow: hidden;
+
 
 }
 
-.products__modal {
-    padding: 10px 20px 20px 20px;
-}
 
 
 .popup__products__modal .btn-cerrar-popup__products__modal {
@@ -67,16 +64,23 @@
 /* ------------------------- */
 .popup__products__modal.active {	transform: scale(1); opacity: 1; }
 
-
-
 .products__modal {
-
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	height: 100%;
+    padding: 10px 20px 20px 20px;
 }
+
 
 .products__modal > .row__one {
 	display: flex;
 	justify-content: center;
 }
+
+.products__modal > .row__two {
+	overflow: auto;
+}
+
 
 
 

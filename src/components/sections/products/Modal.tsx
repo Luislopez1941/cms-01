@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { modal } from '../../../redux/state/modals';
-import General from './modal/General';
+import { General } from './modal/General';
 import Variations from './modal/Variations';
 import './Modal.css'
+import APIs from '../../../services/APIs';
+import Swal from 'sweetalert2';
 
 const Modal: React.FC = () => {
     const dispatch = useDispatch();
     const modalState = useSelector((state: any) => state.modals);
-
+    const { title, subcategory, tags, images, variations } = useSelector((state: any) => state.product);
     const handleModalChange = (value: any) => {
         dispatch(modal(value)); // Despacha la acción para cambiar el estado del modal
-      };
+    };
 
 
     const hanleSendChange = () => {
@@ -23,6 +25,54 @@ const Modal: React.FC = () => {
     const selectType = () => {
         setMode(!mode)
     }
+
+    const handleSave = async () => {
+        try {
+            const variationsPayload = variations.map((v: any) => ({
+                color: v.color,
+                size: v.size,
+                quantity: v.quantity,
+            }));
+
+            const data = {
+                name: title,
+                image: images.length > 0 ? images[0] : '',
+                status: 'active',
+                category: {
+                    connect: { id: Number(subcategory) },
+                },
+                variations: {
+                    create: variationsPayload,
+                },
+            };
+
+            const response = await APIs.createProduct(data);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto creado',
+                text: 'El producto fue creado exitosamente.',
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+
+        } catch (error) {
+            console.error('Error creando producto:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un problema al crear el producto. Intenta de nuevo.',
+            });
+        }
+    };
+
+
+    const handleClose = () => {
+
+    };
+
+
 
     return (
         <div className={`overlay__products__modal ${modalState === 'products-modal' ? 'active' : ''}`}>
@@ -42,12 +92,28 @@ const Modal: React.FC = () => {
                             <p>Variaciones</p>
                         </div>
                     </div>
-                    <div>
-                        {mode ? 
-                        <Variations />
-                        :
-                        <General />
+                    <div className='row__two'>
+                        {mode ?
+                            <Variations />
+                            :
+                            <General />
                         }
+                    </div>
+                    {/* Modal Footer */}
+                    <div className="modal-footer">
+                        <button
+                            className="footer-button footer-button-secondary"
+                            onClick={handleClose}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            className="footer-button footer-button-primary"
+                            onClick={handleSave}
+
+                        >
+                            Guardar Producto
+                        </button>
                     </div>
                 </form>
             </div>

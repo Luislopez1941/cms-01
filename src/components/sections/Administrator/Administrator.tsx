@@ -4,7 +4,7 @@ import './Administrator.css';
 import Modal from './Modal';
 import { useDispatch } from 'react-redux';// Importa la interfaz AppStore
 import { modal } from '../../../redux/state/modals'; // Importa la acción modal
-import { updateAdministrator } from '../../../redux/state/Administrator';
+
 
 const Administrator: React.FC = () => {
 
@@ -42,7 +42,7 @@ const Administrator: React.FC = () => {
 
   const modalUpdate = (item: any) => {
     handleModalChange('administrator-modal')
-    dispatch(updateAdministrator(item));
+    
   }
 
   const updateStatus = async (item: any)  => {

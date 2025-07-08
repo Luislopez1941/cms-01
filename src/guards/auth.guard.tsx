@@ -11,8 +11,8 @@ const PublicValidationFragment = <Navigate replace to={PrivateRoutes.PRIVATE} />
 export const AuthGuard = ({ privateValidation }: Props) => {
   const userState = useSelector((store: any) => store.user);
   console.log(userState)
-
-  return userState._id ? (
+  let us = true
+  return userState.id ? (
     privateValidation ? (
       PrivateValidationFragment
     ) : (
