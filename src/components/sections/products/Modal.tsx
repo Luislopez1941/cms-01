@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const Modal: React.FC = () => {
     const dispatch = useDispatch();
     const modalState = useSelector((state: any) => state.modals);
-    const { title, subcategory, tags, images, variations } = useSelector((state: any) => state.product);
+    const { title, subcategory, tags, price, images, variations } = useSelector((state: any) => state.product);
     const handleModalChange = (value: any) => {
         dispatch(modal(value)); // Despacha la acción para cambiar el estado del modal
     };
@@ -38,6 +38,7 @@ const Modal: React.FC = () => {
 
         const data = {
             name: title,
+            price,
             images,
             status: true,
             category: {

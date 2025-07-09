@@ -29,7 +29,7 @@ function readFilesAsBase64(files: File[]): Promise<string[]> {
 
 export function General() {
   const dispatch = useDispatch();
-  const { title, subcategory, tags, images } = useSelector(
+  const { title, price, subcategory, tags, images } = useSelector(
     (state: any) => state.product
   );
 
@@ -55,6 +55,11 @@ export function General() {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateProduct({ title: e.target.value }));
   };
+
+   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateProduct({ price: Number(e.target.value) }));
+  };
+
 
   const handleSubcategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(updateProduct({ subcategory: e.target.value }));
@@ -183,6 +188,16 @@ export function General() {
                     </option>
                   ))}
                 </select>
+              </div>
+               <div className="form-field">
+                <label className="field-label">Precio</label>
+                <input
+                  type="number"
+                  className="field-input"
+                  value={price}
+                  onChange={handlePriceChange}
+                  placeholder="Ingresa el título del producto"
+                />
               </div>
 
               {/* Tags Input */}

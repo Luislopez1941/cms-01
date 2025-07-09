@@ -19,6 +19,7 @@ export interface Variation {
 
 export interface ProductState {
   title: string;
+  price: number,
   subcategory: string;
   tags: string[];
   images: string[]; 
@@ -27,6 +28,7 @@ export interface ProductState {
 
 const initialState: ProductState = {
   title: '',
+  price: 0,
   subcategory: '',
   tags: [],
   images: [],
