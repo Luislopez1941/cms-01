@@ -52,7 +52,7 @@ const Sidebar: React.FC = () => {
                         </a>
                     </li>
                     <li>
-                        <Link to={PrivateRoutes.STORE} title="Payments" className="tooltip">
+                        <Link to={`/${PrivateRoutes.PRIVATE}/${PrivateRoutes.STORE}`} title="Payments" className="tooltip">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666"><path d="M201-120q-33 0-56.5-23.5T121-200v-318q-23-21-35.5-54t-.5-72l42-136q8-26 28.5-43t47.5-17h556q27 0 47 16.5t29 43.5l42 136q12 39-.5 71T841-518v318q0 33-23.5 56.5T761-120H201Zm368-440q27 0 41-18.5t11-41.5l-22-140h-78v148q0 21 14 36.5t34 15.5Zm-180 0q23 0 37.5-15.5T441-612v-148h-78l-22 140q-4 24 10.5 42t37.5 18Zm-178 0q18 0 31.5-13t16.5-33l22-154h-78l-40 134q-6 20 6.5 43t41.5 23Zm540 0q29 0 42-23t6-43l-42-134h-76l22 154q3 20 16.5 33t31.5 13Z" /></svg>
                             <span className="link hide">Tiendas</span>
                             <span className="tooltip__content">Tiendas</span>
@@ -66,14 +66,14 @@ const Sidebar: React.FC = () => {
                         </a>
                     </li>
                     <li>
-                        <Link to={PrivateRoutes.PRODUCTS} title="Products" className="tooltip">
+                        <Link to={`/${PrivateRoutes.PRIVATE}/${PrivateRoutes.PRODUCTS}`} title="Products" className="tooltip">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666"><path d="M440-91v-366L120-642v321q0 22 10.5 40t29.5 29L440-91Zm80 0 280-161q19-11 29.5-29t10.5-40v-321L520-457v366Zm159-550 118-69-277-159q-19-11-40-11t-40 11l-79 45 318 183ZM480-526l119-68-317-184-120 69 318 183Z" /></svg>
                             <span className="link hide">Products</span>
                             <span className="tooltip__content">Products</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to={PrivateRoutes.CATEGORIES} title="Reports" className="tooltip">
+                        <Link to={`/${PrivateRoutes.PRIVATE}/${PrivateRoutes.CATEGORIES}`} title="Reports" className="tooltip">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666"><path d="m297-581 149-243q6-10 15-14.5t19-4.5q10 0 19 4.5t15 14.5l149 243q6 10 6 21t-5 20q-5 9-14 14.5t-21 5.5H331q-12 0-21-5.5T296-540q-5-9-5-20t6-21ZM700-80q-75 0-127.5-52.5T520-260q0-75 52.5-127.5T700-440q75 0 127.5 52.5T880-260q0 75-52.5 127.5T700-80Zm-580-60v-240q0-17 11.5-28.5T160-420h240q17 0 28.5 11.5T440-380v240q0 17-11.5 28.5T400-100H160q-17 0-28.5-11.5T120-140Z" /></svg>
                             <span className="link hide">Categorias</span>
                             <span className="tooltip__content">Categorias</span>

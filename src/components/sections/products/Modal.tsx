@@ -26,46 +26,49 @@ const Modal: React.FC = () => {
         setMode(!mode)
     }
 
-    const handleSave = async () => {
-        try {
-            const variationsPayload = variations.map((v: any) => ({
-                color: v.color,
-                size: v.size,
-                quantity: v.quantity,
-            }));
+    const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault(); // 👉 previene el comportamiento por defecto
 
-            const data = {
-                name: title,
-                image: images.length > 0 ? images[0] : '',
-                status: 'active',
-                category: {
-                    connect: { id: Number(subcategory) },
-                },
-                variations: {
-                    create: variationsPayload,
-                },
-            };
+    try {
+        const variationsPayload = variations.map((v: any) => ({
+            color: v.color,
+            size: v.size,
+            quantity: v.quantity,
+        }));
 
-            const response = await APIs.createProduct(data);
+        const data = {
+            name: title,
+            images,
+            status: true,
+            category: {
+                connect: { id: Number(subcategory) },
+            },
+            variations: {
+                create: variationsPayload,
+            },
+        };
 
-            Swal.fire({
-                icon: 'success',
-                title: 'Producto creado',
-                text: 'El producto fue creado exitosamente.',
-                timer: 2000,
-                timerProgressBar: true,
-                showConfirmButton: false,
-            });
+        const response = await APIs.createProduct(data);
 
-        } catch (error) {
-            console.error('Error creando producto:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Hubo un problema al crear el producto. Intenta de nuevo.',
-            });
-        }
-    };
+        Swal.fire({
+            icon: 'success',
+            title: 'Producto creado',
+            text: 'El producto fue creado exitosamente.',
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+        });
+
+    } catch (error) {
+        console.error('Error creando producto:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al crear el producto. Intenta de nuevo.',
+        });
+    }
+};
+
 
 
     const handleClose = () => {

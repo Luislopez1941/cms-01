@@ -1,4 +1,4 @@
-import React, { useRef, KeyboardEvent } from "react";
+import React, { useRef, KeyboardEvent, useState, useEffect } from "react";
 import "./styles/General.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,20 +10,44 @@ import {
   removeImage,
   clearImages,
 } from "../../../../redux/state/Product";
+import APIs from "../../../../services/APIs";
 
-const mockSubcategories = [
-  { value: "electronics", label: "Electrónicos" },
-  { value: "clothing", label: "Ropa" },
-  { value: "books", label: "Libros" },
-  { value: "home", label: "Hogar" },
-  { value: "sports", label: "Deportes" },
-];
+// Helper para convertir archivos a base64
+function readFilesAsBase64(files: File[]): Promise<string[]> {
+  return Promise.all(
+    files.map(
+      (file) =>
+        new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        })
+    )
+  );
+}
 
 export function General() {
   const dispatch = useDispatch();
   const { title, subcategory, tags, images } = useSelector(
     (state: any) => state.product
   );
+
+  const [categories, setCategories] = useState<any>([]);
+
+  const fetch = async () => {
+    let store_id = 1;
+    try {
+      let result: any = await APIs.getCategories(store_id);
+      setCategories(result.data);
+    } catch (error) {
+      // Manejo de error si quieres
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   const tagInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -52,21 +76,12 @@ export function General() {
     dispatch(removeTag(index));
   };
 
-  const readFilesAsBase64 = async (files: File[]): Promise<string[]> => {
-    const base64Promises = files.map((file) => {
-      return new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = reject;
-      });
-    });
-
-    return Promise.all(base64Promises);
-  };
-
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
+    const files = Array.from(event.target.files || []).filter((file) =>
+      file.type.startsWith("image/")
+    );
+    if (files.length === 0) return;
+
     readFilesAsBase64(files).then((base64Images) => {
       dispatch(addImages(base64Images));
     });
@@ -82,6 +97,7 @@ export function General() {
     const files = Array.from(e.dataTransfer.files).filter((file) =>
       file.type.startsWith("image/")
     );
+    if (files.length === 0) return;
 
     readFilesAsBase64(files).then((base64Images) => {
       dispatch(addImages(base64Images));
@@ -106,8 +122,9 @@ export function General() {
     }
   };
 
-  // Si no está abierta la modal, no renderiza nada
-  const open = true; // Reemplaza esto con tu lógica real para manejar el estado `open`
+  // Controla la visibilidad de la modal
+  const open = true; // Cambia según tu lógica
+
   if (!open) return null;
 
   return (
@@ -160,9 +177,9 @@ export function General() {
                   onChange={handleSubcategoryChange}
                 >
                   <option value="">Selecciona una subcategoría</option>
-                  {mockSubcategories.map((subcategory) => (
-                    <option key={subcategory.value} value={subcategory.value}>
-                      {subcategory.label}
+                  {categories.map((category: any) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
                     </option>
                   ))}
                 </select>

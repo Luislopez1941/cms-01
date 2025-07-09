@@ -48,31 +48,6 @@ const APIs = {
     return ConfigurationAPIs.put(path, data, config);
   },
 
-  // Administradores
-  updateAdministrator: async (id: any, data: any, token: any, customPath?: string) => {
-    const path = customPath || `user/updateUser/${id}`;
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-      params: { ...data },
-    };
-
-    return ConfigurationAPIs.put(path, data, config);
-  },
-
-  // Administradores
-  searchUser: async (data: any, customPath?: string) => {
-    const path = customPath || `user/searchUser/${data.email}`;
-    const config = {
-      headers: {
-        Authorization: data.token,
-      },
-      params: { ...data },
-    };
-
-    return ConfigurationAPIs.get(path, config);
-  },
 
 
 
@@ -88,16 +63,16 @@ const APIs = {
     return ConfigurationAPIs.get(path);
   },
 
-  // Administradores
-  updateStatusCategory: async (id: any, data: any, customPath?: string) => {
-    const path = customPath || `category/state/${id}`;
-    return ConfigurationAPIs.put(path, data);
-  },
-
-   ///////////////////////////////////////////////////////// Producto ////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////// Producto ////////////////////////////////////////////////////////
   createProduct: async (data: any, customPath?: string) => {
     const path = customPath || 'products/create';
     return ConfigurationAPIs.post(path, data);
+  },
+
+
+  getProducts: async (categoryId: number) => {
+    const path = `products/category/${categoryId}`;
+    return ConfigurationAPIs.get(path);
   },
 
 

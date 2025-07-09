@@ -16,9 +16,9 @@ const RootPage: React.FC = () => {
         <Header />
         <main className='main'>
           <Routes>
-            <Route path={`/${PrivateRoutes.STORE}`} element={<Store />} />
-            <Route path={`/${PrivateRoutes.CATEGORIES}`} element={<Categories />} />
-            <Route path={`/${PrivateRoutes.PRODUCTS}`} element={<Products />} />
+            <Route path={`${PrivateRoutes.STORE}`} element={<Store />} />
+            <Route path={`${PrivateRoutes.CATEGORIES}`} element={<Categories />} />
+            <Route path={`${PrivateRoutes.PRODUCTS}`} element={<Products />} />
           </Routes>
         </main>
       </div>
